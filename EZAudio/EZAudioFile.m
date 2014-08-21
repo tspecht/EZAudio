@@ -245,6 +245,10 @@
       float rms = [EZAudio RMS:bufferList->mBuffers[0].mData
                         length:bufferSize];
       _waveformData[i] = rms;
+
+      dispatch_async(dispatch_get_main_queue(), ^{
+            waveformDataCompletionBlock( _waveformData, _waveformTotalBuffers );
+      });
       
       // Since we malloc'ed, we should cleanup
       [EZAudio freeBufferList:bufferList];

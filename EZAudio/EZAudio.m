@@ -248,7 +248,7 @@
 		// no, format it as an integer
 		sprintf(errorString, "%d", (int)result);
 	fprintf(stderr, "Error: %s (%s)\n", operation, errorString);
-	exit(1);
+	// exit(1);
 }
 
 #pragma mark - Math Utility
