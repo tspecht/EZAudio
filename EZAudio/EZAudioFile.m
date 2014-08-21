@@ -213,7 +213,7 @@
   
   _waveformFrameRate    = [self recommendedDrawingFrameRate];
   _waveformTotalBuffers = [self minBuffersWithFrameRate:_waveformFrameRate];
-  _waveformData         = (float*)malloc(sizeof(float)*_waveformTotalBuffers);
+  _waveformData         = (float*)calloc(_waveformTotalBuffers, sizeof(float));
   
   if( self.totalFrames == 0 ){
     waveformDataCompletionBlock( _waveformData, _waveformTotalBuffers );
