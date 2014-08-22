@@ -390,18 +390,16 @@
     glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, sizeof(EZAudioPlotGLPoint), NULL);
     
     // Normal plot
-    glPushMatrix();
     self.baseEffect.transform.modelviewMatrix = GLKMatrix4MakeXRotation(0);
+    [self.baseEffect prepareToDraw];
     glDrawArrays(_drawingType, 0, _bufferPlotGraphSize);
-    glPopMatrix();
     
     if( self.shouldMirror ){
       // Mirrored plot
-      [self.baseEffect prepareToDraw];
-      glPushMatrix();
       self.baseEffect.transform.modelviewMatrix = GLKMatrix4MakeXRotation(M_PI);
+      [self.baseEffect prepareToDraw];
       glDrawArrays(_drawingType, 0, _bufferPlotGraphSize);
-      glPopMatrix();
+    
     }
     
     
@@ -419,18 +417,15 @@
     glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, sizeof(EZAudioPlotGLPoint), NULL);
     
     // Normal plot
-    glPushMatrix();
     self.baseEffect.transform.modelviewMatrix = GLKMatrix4MakeXRotation(0);
+      [self.baseEffect prepareToDraw];
     glDrawArrays(_drawingType, 0, _rollingPlotGraphSize);
-    glPopMatrix();
     
     if( self.shouldMirror ){
       // Mirrored plot
-      [self.baseEffect prepareToDraw];
-      glPushMatrix();
       self.baseEffect.transform.modelviewMatrix = GLKMatrix4MakeXRotation(3.14159265359);
+        [self.baseEffect prepareToDraw];
       glDrawArrays(_drawingType, 0, _rollingPlotGraphSize);
-      glPopMatrix();
     }
     
     glBindBuffer(GL_ARRAY_BUFFER,0);
